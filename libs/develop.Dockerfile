@@ -56,15 +56,19 @@ RUN echo "\nBuilding EDDL library..." >&2 \
     && make install \
     && cp -rf ${EDDL_SRC}/build/install/lib/* /usr/lib/ \    
     && cp -rf ${EDDL_SRC}/build/install/include/* /usr/include/ \
-    && cp -rf install/include/third_party/eigen/Eigen /usr/local/include/
+    && cp -rf install/include/third_party/eigen/Eigen /usr/local/include/ \
+    && mkdir -p /usr/share/EDDL \
+    && cp install/*.cmake /usr/share/EDDL/
 
 RUN echo "\nBuilding ECVL library..." >&2 \
     && cd ${ECVL_SRC} \
     && mkdir build \
     && cd build \
-    && cmake -DECVL_BUILD_GUI=OFF .. \ 
+    && cmake -DECVL_BUILD_GUI=OFF -DECVL_BUILD_EDDL=ON -DECVL_DATASET_PARSER=ON .. \
     && make -j$(grep -c ^processor /proc/cpuinfo) \
     && echo "\n Installing ECVL library..." >&2 \
     && make install \
     && cp -rf ${ECVL_SRC}/build/install/lib/* /usr/lib/ \
-    && cp -rf ${ECVL_SRC}/build/install/include/* /usr/include/
+    && cp -rf ${ECVL_SRC}/build/install/include/* /usr/include/ \
+    && mkdir -p /usr/share/ECVL \
+    && cp install/*.cmake /usr/share/ECVL/
