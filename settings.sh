@@ -15,7 +15,7 @@ LATEST_BRANCH=master
 # ECVL repository
 ECVL_REPOSITORY=git@github.com:deephealthproject/ecvl.git
 ECVL_BRANCH=master
-ECVL_REVISION=3b07fabc005c3fca2c7e38cce6502a2d62b61010
+ECVL_REVISION=ce069064bb49442fc07ba34ed2f66dc8f1ababc1
 
 # PyECVL
 PYECVL_REPOSITORY=git@github.com:deephealthproject/pyecvl.git
